@@ -1,0 +1,81 @@
+---
+import { menu, site } from '../config/site';
+const rotaAtual = Astro.url.pathname;
+const ativo = (href: string) =>
+  href === '/' ? rotaAtual === '/' : rotaAtual.startsWith(href);
+---
+
+<header class="sticky top-0 z-50 border-b border-rosa-light/30 bg-white/80 backdrop-blur-md dark:border-lilas/20 dark:bg-escuro/80">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3" aria-label="Principal">
+    <a href="/" class="flex items-center gap-2 text-xl font-extrabold text-escuro dark:text-white">
+      <span class="grid h-9 w-9 place-items-center rounded-full bg-gradiente-mamae text-white" aria-hidden="true">
+        ♥
+      </span>
+      <span>
+        Mamãe<span class="text-rosa-dark dark:text-rosa-light">Escolhe</span>
+      </span>
+    </a>
+
+    <!-- Menu desktop -->
+    <ul class="hidden items-center gap-1 md:flex">
+      {menu.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            aria-current={ativo(item.href) ? 'page' : undefined}
+            class={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+              ativo(item.href)
+                ? 'bg-rosa-light/20 text-rosa-dark dark:bg-lilas/20 dark:text-lilas-light'
+                : 'text-escuro/70 hover:bg-rosa-light/10 hover:text-rosa-dark dark:text-white/70 dark:hover:text-lilas-light'
+            }`}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Botão menu mobile -->
+    <button
+      id="menu-toggle"
+      class="grid h-10 w-10 place-items-center rounded-full text-escuro hover:bg-rosa-light/10 md:hidden dark:text-white"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="menu-mobile"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Menu mobile -->
+  <ul id="menu-mobile" class="hidden flex-col gap-1 border-t border-rosa-light/20 px-4 py-3 md:hidden">
+    {menu.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          aria-current={ativo(item.href) ? 'page' : undefined}
+          class={`block rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
+            ativo(item.href)
+              ? 'bg-rosa-light/20 text-rosa-dark dark:bg-lilas/20 dark:text-lilas-light'
+              : 'text-escuro/70 hover:bg-rosa-light/10 dark:text-white/70'
+          }`}
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menuMobile = document.getElementById('menu-mobile');
+  toggle?.addEventListener('click', () => {
+    const aberto = menuMobile?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(aberto === false));
+  });
+</script>

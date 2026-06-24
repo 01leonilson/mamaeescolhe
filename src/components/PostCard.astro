@@ -1,0 +1,80 @@
+---
+interface Props {
+  url: string;
+  title: string;
+  description: string;
+  image: string;
+  type: 'review' | 'guia' | 'comparativo' | 'lista';
+  category: string;
+  price?: number;
+  featured?: boolean;
+}
+
+const { url, title, description, image, type, category, price, featured } = Astro.props;
+
+const badges: Record<Props['type'], { label: string; classe: string }> = {
+  review: { label: 'Review', classe: 'bg-rosa text-white' },
+  guia: { label: 'Guia', classe: 'bg-lilas text-white' },
+  comparativo: { label: 'Comparativo', classe: 'bg-lilas-dark text-white' },
+  lista: { label: 'Lista', classe: 'bg-rosa-dark text-white' },
+};
+
+const badge = badges[type];
+const precoFormatado =
+  typeof price === 'number'
+    ? price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+    : null;
+---
+
+<article
+  class="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1 dark:bg-escuro/80"
+>
+  <a href={url} class="block overflow-hidden">
+    <div class="relative aspect-[16/10] overflow-hidden bg-rosa-light/20">
+      <img
+        src={image}
+        alt={title}
+        loading="lazy"
+        decoding="async"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <span
+        class={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold shadow ${badge.classe}`}
+      >
+        {badge.label}
+      </span>
+      {featured && (
+        <span class="absolute right-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-rosa-dark shadow">
+          ★ Destaque
+        </span>
+      )}
+    </div>
+  </a>
+
+  <div class="flex flex-1 flex-col p-5">
+    <span class="mb-2 text-xs font-semibold uppercase tracking-wide text-lilas-dark dark:text-lilas-light">
+      {category}
+    </span>
+    <h3 class="mb-2 text-lg font-bold leading-snug text-escuro dark:text-white">
+      <a href={url} class="transition-colors hover:text-rosa-dark dark:hover:text-rosa-light">
+        {title}
+      </a>
+    </h3>
+    <p class="mb-4 flex-1 text-sm text-escuro/70 dark:text-white/70">
+      {description}
+    </p>
+    <div class="flex items-center justify-between">
+      {precoFormatado && (
+        <span class="text-base font-bold text-rosa-dark dark:text-rosa-light">
+          a partir de {precoFormatado}
+        </span>
+      )}
+      <a
+        href={url}
+        class="ml-auto text-sm font-semibold text-lilas-dark transition-colors hover:text-rosa-dark dark:text-lilas-light"
+      >
+        Ler mais →
+      </a>
+    </div>
+  </div>
+</article>

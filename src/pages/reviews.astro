@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PostGrid from '../components/PostGrid.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft && data.category === 'Reviews')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Reviews" description="Análises honestas e detalhadas dos principais produtos para bebês.">
+  <PageHeader titulo="Reviews" subtitulo="Testamos e analisamos para você comprar com confiança." />
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <PostGrid posts={posts} vazio="Em breve novos reviews por aqui!" />
+  </div>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PostGrid from '../components/PostGrid.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft && data.category === 'Enxoval')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Enxoval do Bebê" description="Listas e guias para montar o enxoval do bebê sem esquecer de nada.">
+  <PageHeader titulo="Enxoval do Bebê" subtitulo="Listas práticas para preparar a chegada do seu bebê." />
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <PostGrid posts={posts} vazio="Em breve novas listas de enxoval!" />
+  </div>
+</BaseLayout>

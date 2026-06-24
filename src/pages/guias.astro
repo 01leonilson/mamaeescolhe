@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PostGrid from '../components/PostGrid.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft && data.category === 'Guias')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Guias de Compra" description="Guias completos para escolher os melhores produtos para o seu bebê.">
+  <PageHeader titulo="Guias de Compra" subtitulo="Passo a passo para acertar na escolha sem complicação." />
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <PostGrid posts={posts} vazio="Em breve novos guias por aqui!" />
+  </div>
+</BaseLayout>

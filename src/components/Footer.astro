@@ -1,0 +1,51 @@
+---
+import { menu, site } from '../config/site';
+const ano = new Date().getFullYear();
+---
+
+<footer class="mt-20 border-t border-rosa-light/30 bg-rosa-light/5 dark:border-lilas/20 dark:bg-escuro/60">
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid gap-8 md:grid-cols-3">
+      <div>
+        <a href="/" class="flex items-center gap-2 text-lg font-extrabold text-escuro dark:text-white">
+          <span class="grid h-8 w-8 place-items-center rounded-full bg-gradiente-mamae text-white" aria-hidden="true">♥</span>
+          Mamãe<span class="text-rosa-dark dark:text-rosa-light">Escolhe</span>
+        </a>
+        <p class="mt-3 max-w-xs text-sm text-escuro/60 dark:text-white/60">
+          {site.descricao}
+        </p>
+      </div>
+
+      <div>
+        <h4 class="mb-3 text-sm font-bold uppercase tracking-wide text-lilas-dark dark:text-lilas-light">Navegação</h4>
+        <ul class="space-y-2 text-sm">
+          {menu.map((item) => (
+            <li>
+              <a href={item.href} class="text-escuro/70 transition-colors hover:text-rosa-dark dark:text-white/70 dark:hover:text-rosa-light">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="mb-3 text-sm font-bold uppercase tracking-wide text-lilas-dark dark:text-lilas-light">Contato</h4>
+        <p class="text-sm text-escuro/70 dark:text-white/70">{site.email}</p>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-xl bg-white/60 p-4 text-xs leading-relaxed text-escuro/60 dark:bg-escuro/40 dark:text-white/50">
+      <strong class="text-escuro/80 dark:text-white/70">Aviso de afiliado:</strong>
+      O MamãeEscolhe participa de programas de afiliados da Amazon, Mercado Livre e Shopee.
+      Isso significa que podemos receber uma comissão por compras realizadas através dos
+      nossos links, <em>sem nenhum custo adicional para você</em>. As recomendações são
+      sempre baseadas em pesquisa e análise editorial independente. Preços e disponibilidade
+      podem variar.
+    </div>
+
+    <p class="mt-6 text-center text-xs text-escuro/50 dark:text-white/40">
+      © {ano} {site.nome}. Todos os direitos reservados. Feito com ♥ para as famílias brasileiras.
+    </p>
+  </div>
+</footer>

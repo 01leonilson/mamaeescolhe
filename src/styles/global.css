@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-white text-escuro dark:bg-escuro dark:text-white;
+  }
+}
+
+/* Estilização do conteúdo Markdown dos posts */
+@layer components {
+  .prose-mamae {
+    @apply max-w-none text-escuro/85 dark:text-white/85;
+  }
+  .prose-mamae h2 {
+    @apply mb-4 mt-10 text-2xl font-bold text-escuro dark:text-white;
+  }
+  .prose-mamae h3 {
+    @apply mb-3 mt-8 text-xl font-bold text-escuro dark:text-white;
+  }
+  .prose-mamae p {
+    @apply mb-5 leading-relaxed;
+  }
+  .prose-mamae ul {
+    @apply mb-5 list-disc space-y-2 pl-6;
+  }
+  .prose-mamae ol {
+    @apply mb-5 list-decimal space-y-2 pl-6;
+  }
+  .prose-mamae a {
+    @apply font-semibold text-rosa-dark underline-offset-2 hover:underline dark:text-rosa-light;
+  }
+  .prose-mamae strong {
+    @apply font-bold text-escuro dark:text-white;
+  }
+  .prose-mamae blockquote {
+    @apply my-6 border-l-4 border-lilas bg-lilas-light/10 py-2 pl-4 italic;
+  }
+  .prose-mamae table {
+    @apply my-6 w-full border-collapse text-sm;
+  }
+  .prose-mamae th,
+  .prose-mamae td {
+    @apply border border-lilas/20 px-3 py-2 text-left;
+  }
+  .prose-mamae th {
+    @apply bg-rosa-light/10 font-semibold;
+  }
+}

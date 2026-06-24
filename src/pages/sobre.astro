@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout title="Sobre" description="Conheça o MamãeEscolhe e nossa missão de ajudar famílias a escolherem melhor.">
+  <PageHeader titulo="Sobre o MamãeEscolhe" subtitulo={site.tagline} />
+  <div class="mx-auto max-w-3xl px-4 py-12">
+    <div class="prose-mamae">
+      <p>
+        O <strong>MamãeEscolhe</strong> nasceu de uma necessidade que toda mãe e todo pai
+        conhecem: a quantidade enorme de decisões que vêm junto com a chegada de um bebê.
+        Carrinho, bebê conforto, berço, enxoval... são dezenas de escolhas, cada uma com
+        dezenas de opções, preços que variam muito e opiniões para todos os lados.
+      </p>
+      <p>
+        Nossa missão é simples: <strong>facilitar essas escolhas</strong> com informação
+        clara, honesta e baseada em pesquisa. Reunimos reviews detalhados, guias de compra
+        e listas práticas de enxoval para que você gaste seu tempo curtindo a gravidez — e
+        não se perdendo em abas do navegador.
+      </p>
+
+      <h2>Como recomendamos os produtos</h2>
+      <p>
+        Analisamos especificações técnicas, normas de segurança (como certificação do
+        Inmetro para itens de transporte), avaliações reais de outras famílias e a relação
+        custo-benefício. Quando indicamos um produto, é porque acreditamos que ele entrega
+        valor para o seu dinheiro.
+      </p>
+
+      <h2>Transparência sobre afiliados</h2>
+      <p>
+        Para manter o site funcionando, participamos dos programas de afiliados da
+        <strong> Amazon</strong>, <strong>Mercado Livre</strong> e <strong>Shopee</strong>.
+        Isso significa que, quando você compra através dos nossos links, podemos receber uma
+        pequena comissão — <em>sem que você pague nada a mais por isso</em>. Essa é a forma
+        como mantemos o conteúdo gratuito, e ela nunca influencia a honestidade das nossas
+        recomendações.
+      </p>
+
+      <h2>Fale com a gente</h2>
+      <p>
+        Tem uma dúvida, sugestão de produto ou quer compartilhar sua experiência? Escreva
+        para <a href={`mailto:${site.email}`}>{site.email}</a>. Adoramos ouvir as famílias
+        que acompanham o MamãeEscolhe. 💕
+      </p>
+    </div>
+  </div>
+</BaseLayout>

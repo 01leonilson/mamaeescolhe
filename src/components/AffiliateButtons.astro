@@ -1,0 +1,46 @@
+---
+import { afiliados, comTagAfiliado } from '../config/affiliates';
+
+interface Props {
+  amazonUrl?: string;
+  mercadolivreUrl?: string;
+  shopeeUrl?: string;
+  titulo?: string;
+}
+
+const { amazonUrl, mercadolivreUrl, shopeeUrl, titulo } = Astro.props;
+
+const botoes = [
+  { plataforma: 'amazon' as const, url: comTagAfiliado(amazonUrl, 'amazon') },
+  { plataforma: 'mercadolivre' as const, url: comTagAfiliado(mercadolivreUrl, 'mercadolivre') },
+  { plataforma: 'shopee' as const, url: comTagAfiliado(shopeeUrl, 'shopee') },
+].filter((b) => b.url);
+---
+
+{
+  botoes.length > 0 && (
+    <div class="my-8 rounded-2xl border border-rosa-light/40 bg-rosa-light/5 p-6 dark:border-lilas/30 dark:bg-escuro/40">
+      {titulo && (
+        <p class="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-lilas-dark dark:text-lilas-light">
+          {titulo}
+        </p>
+      )}
+      <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
+        {botoes.map((botao) => (
+          <a
+            href={botao.url}
+            target="_blank"
+            rel="nofollow sponsored noopener"
+            class={`flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold text-white shadow-suave transition-transform hover:-translate-y-0.5 ${afiliados[botao.plataforma].cor}`}
+          >
+            <span>Comprar na {afiliados[botao.plataforma].nome}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+      <p class="mt-3 text-center text-xs text-escuro/50 dark:text-white/40">
+        Links de afiliado — você não paga nada a mais por isso.
+      </p>
+    </div>
+  )
+}
