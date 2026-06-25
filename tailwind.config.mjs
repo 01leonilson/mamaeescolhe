@@ -18,7 +18,7 @@ export default {
         escuro: '#1F2937',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter Variable', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       boxShadow: {
         suave: '0 4px 20px -2px rgba(244, 114, 182, 0.15)',

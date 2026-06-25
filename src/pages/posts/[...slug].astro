@@ -89,8 +89,12 @@ const schema = {
     <img
       src={data.image}
       alt={data.title}
+      width="1280"
+      height="720"
       class="mb-8 aspect-[16/9] w-full rounded-2xl object-cover shadow-card"
       loading="eager"
+      fetchpriority="high"
+      decoding="async"
     />
 
     <AffiliateButtons

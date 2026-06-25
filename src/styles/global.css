@@ -2,10 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Inter variável self-hosted (latin) — sem requisição a terceiros.
+   font-display: swap renderiza o texto na fonte de fallback imediatamente
+   e troca pela Inter ao carregar, eliminando texto invisível (melhora LCP). */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/inter-var.woff2') format('woff2');
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    /* Reduz o salto de layout (CLS) ao trocar a fonte de fallback pela Inter */
+    font-family:
+      'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   }
   body {
     @apply bg-white text-escuro dark:bg-escuro dark:text-white;

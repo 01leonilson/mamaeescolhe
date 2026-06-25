@@ -72,12 +72,13 @@ const schemaFinal = schema ?? schemaPadrao;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imagemAbsoluta} />
 
-    <!-- Tipografia Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Tipografia Inter (self-hosted, variável) — preload do LCP, sem terceiros -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/inter-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <script type="application/ld+json" set:html={JSON.stringify(schemaFinal)} />
