@@ -24,7 +24,8 @@ export const afiliados: Record<Plataforma, ConfigAfiliado> = {
     nome: 'Amazon',
     tag: 'melhordesco0f-20',
     paramTag: 'tag',
-    cor: 'bg-[#FF9900] hover:bg-[#e68a00]',
+    // Texto escuro sobre o laranja Amazon (contraste AA ~6,6:1 e fiel à marca)
+    cor: 'bg-[#FF9900] hover:bg-[#e68a00] !text-escuro',
   },
   mercadolivre: {
     nome: 'Mercado Livre',
@@ -37,7 +38,8 @@ export const afiliados: Record<Plataforma, ConfigAfiliado> = {
     nome: 'Shopee',
     tag: 'SEU_ID_SHOPEE',
     paramTag: 'af_id',
-    cor: 'bg-[#EE4D2D] hover:bg-[#d63f22]',
+    // Vermelho Shopee aprofundado para texto branco passar em AA (~5,7:1)
+    cor: 'bg-[#D0011B] hover:bg-[#b30016]',
   },
 };
 

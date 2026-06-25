@@ -8,12 +8,14 @@ export default {
         rosa: {
           DEFAULT: '#F472B6',
           light: '#F9A8D4',
-          dark: '#EC4899',
+          // dark escurecido para AA: texto sobre branco (~6:1) e texto branco sobre o badge (~6:1)
+          dark: '#BE185D',
         },
         lilas: {
           DEFAULT: '#A78BFA',
           light: '#C4B5FD',
-          dark: '#8B5CF6',
+          // dark escurecido para AA: texto sobre branco (~7:1) e texto branco sobre o badge (~7:1)
+          dark: '#6D28D9',
         },
         escuro: '#1F2937',
       },

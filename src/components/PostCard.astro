@@ -12,11 +12,12 @@ interface Props {
 
 const { url, title, description, image, type, category, price, featured } = Astro.props;
 
+// Fundos com contraste AA (texto branco >= 4.5:1) e 4 tons distintos
 const badges: Record<Props['type'], { label: string; classe: string }> = {
-  review: { label: 'Review', classe: 'bg-rosa text-white' },
-  guia: { label: 'Guia', classe: 'bg-lilas text-white' },
-  comparativo: { label: 'Comparativo', classe: 'bg-lilas-dark text-white' },
-  lista: { label: 'Lista', classe: 'bg-rosa-dark text-white' },
+  review: { label: 'Review', classe: 'bg-rosa-dark text-white' },
+  guia: { label: 'Guia', classe: 'bg-lilas-dark text-white' },
+  comparativo: { label: 'Comparativo', classe: 'bg-[#4338CA] text-white' },
+  lista: { label: 'Lista', classe: 'bg-[#9D174D] text-white' },
 };
 
 const badge = badges[type];
